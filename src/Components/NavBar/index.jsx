@@ -27,7 +27,7 @@ const NavBar = () => {
             Evaluar Paciente
           </NavLink>
         </li>
-        <li>
+        {/* <li>
           <NavLink
             to="/historial"
             className={({ isActive }) =>
@@ -36,7 +36,7 @@ const NavBar = () => {
           >
             Historial
           </NavLink>
-        </li>
+        </li> */}
       </ul>
     </nav>
   );

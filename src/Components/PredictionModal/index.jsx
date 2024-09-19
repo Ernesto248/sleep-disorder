@@ -9,7 +9,9 @@ const PredictionModal = ({ isOpen, onClose, prediction }) => {
         <h2 className="text-xl font-bold mb-4 text-center">
           Resultado de la Predicción
         </h2>
-        <p className="text-lg mb-4 text-center">{prediction}</p>
+        <p className="text-lg mb-4 text-center">
+          {prediction}% riesgo de mortalidad
+        </p>
         <div className="flex justify-center">
           <button
             onClick={onClose}

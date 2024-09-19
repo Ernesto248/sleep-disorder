@@ -9,7 +9,7 @@ import formSchema from "../../schemas/formSchema";
 
 const handlePredictionResult = (result) => {
   if (result.length === 2) {
-    const class1Probability = result[0] * 100; // Convertir a porcentaje
+    const class1Probability = result[1] * 100; // Convertir a porcentaje
     const roundedClass1Probability = Math.round(class1Probability * 100) / 100;
 
     console.log(`Resultado de la evaluacion : ${roundedClass1Probability}%`);
