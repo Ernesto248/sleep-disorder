@@ -7,132 +7,139 @@ import { useState, useEffect } from "react";
 import * as tf from "@tensorflow/tfjs";
 import formSchema from "../../schemas/formSchema";
 
-const handlePredictionResult = (result) => {
-  if (result.length === 2) {
-    const class1Probability = result[1] * 100; // Convertir a porcentaje
-    const roundedClass1Probability = Math.round(class1Probability * 100) / 100;
+// const handlePredictionResult = (result) => {
+//   if (result.length === 2) {
+//     const class1Probability = result[1] * 100; // Convertir a porcentaje
+//     const roundedClass1Probability = Math.round(class1Probability * 100) / 100;
 
-    console.log(`Resultado de la evaluacion : ${roundedClass1Probability}%`);
+//     console.log(`Resultado de la evaluacion : ${roundedClass1Probability}%`);
 
-    return `${roundedClass1Probability}%`;
-  }
-  return "Predicción no válida";
-};
+//     return `${roundedClass1Probability}%`;
+//   }
+//   return "Predicción no válida";
+// };
 
 // Medias y desviaciones estándar extraídas de Python
-const means = [
-  0.61111111, 55.6666667, 0.216049383, 0.185185185, 0.0740740741, 0.037037037,
-  0.049382716, 0.104938272, 0.12345679, 0.203703704, 0.141975309, 0.0740740741,
-  0.290123457, 0.469135802, 0.0555555556, 125.123457, 76.7716049, 70.61728395,
-  10.9851852, 37.16666667, 15.7132716, 852.740741, 6.66666667, 328.564815,
-  4.67111111, 3.78919753, 33.4074074, 38.154321, 1.83641975, 4.73580247,
-  0.617283951, 0.135802469, 0.543209877,
-];
+// const means = [
+//   0.61111111, 55.6666667, 0.216049383, 0.185185185, 0.0740740741, 0.037037037,
+//   0.049382716, 0.104938272, 0.12345679, 0.203703704, 0.141975309, 0.0740740741,
+//   0.290123457, 0.469135802, 0.0555555556, 125.123457, 76.7716049, 70.61728395,
+//   10.9851852, 37.16666667, 15.7132716, 852.740741, 6.66666667, 328.564815,
+//   4.67111111, 3.78919753, 33.4074074, 38.154321, 1.83641975, 4.73580247,
+//   0.617283951, 0.135802469, 0.543209877,
+// ];
 
-const stdDevs = [
-  0.48749802, 12.56243666, 0.41154835, 0.38844772, 0.2618914, 0.18885257,
-  0.21666579, 0.30647387, 0.3289608, 0.40275117, 0.34902481, 0.2618914,
-  0.45381917, 0.49904649, 0.22906142, 15.32518521, 14.43387421, 10.76524804,
-  2.10027106, 7.35875224, 2.49282175, 122.35409833, 1.77548463, 62.78950576,
-  1.35058789, 1.17610887, 9.72305111, 14.5502836, 0.3216002, 0.79618049,
-  0.48604987, 0.34257869, 0.49812941,
-];
+// const stdDevs = [
+//   0.48749802, 12.56243666, 0.41154835, 0.38844772, 0.2618914, 0.18885257,
+//   0.21666579, 0.30647387, 0.3289608, 0.40275117, 0.34902481, 0.2618914,
+//   0.45381917, 0.49904649, 0.22906142, 15.32518521, 14.43387421, 10.76524804,
+//   2.10027106, 7.35875224, 2.49282175, 122.35409833, 1.77548463, 62.78950576,
+//   1.35058789, 1.17610887, 9.72305111, 14.5502836, 0.3216002, 0.79618049,
+//   0.48604987, 0.34257869, 0.49812941,
+// ];
 
 // Función para estandarizar los valores de entrada
-const standardize = (inputData) => {
-  return inputData.map(
-    (value, index) => (value - means[index]) / stdDevs[index]
-  );
-};
+// const standardize = (inputData) => {
+//   return inputData.map(
+//     (value, index) => (value - means[index]) / stdDevs[index]
+//   );
+// };
 
 const EvalForm = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [model, setModel] = useState(null);
-  const [prediction, setPrediction] = useState(null);
+  // const [model, setModel] = useState(null);
+  // const [prediction, setPrediction] = useState(null);
 
-  const predict = async (inputData) => {
-    if (model) {
-      const inputTensor = tf.tensor2d([inputData]);
-      const prediction = model.predict(inputTensor);
-      return prediction.dataSync();
-    }
-    return null;
-  };
+  // const predict = async (inputData) => {
+  //   if (model) {
+  //     const inputTensor = tf.tensor2d([inputData]);
+  //     const prediction = model.predict(inputTensor);
+  //     return prediction.dataSync();
+  //   }
+  //   return null;
+  // };
 
-  const predictSubmit = async (event) => {
-    event.preventDefault();
-    const result = await predict(inputData);
-    setPrediction(result[0]);
-  };
+  // const predictSubmit = async (event) => {
+  //   event.preventDefault();
+  //   const result = await predict(inputData);
+  //   setPrediction(result[0]);
+  // };
 
-  useEffect(() => {
-    const loadModel = async () => {
-      const loadedModel = await tf.loadLayersModel("model/model.json");
-      setModel(loadedModel);
-      loadedModel.summary();
-      console.log("modelo cargado");
-    };
+  // useEffect(() => {
+  //   const loadModel = async () => {
+  //     const loadedModel = await tf.loadLayersModel("model/model.json");
+  //     setModel(loadedModel);
+  //     loadedModel.summary();
+  //     console.log("modelo cargado");
+  //   };
 
-    loadModel();
-  }, []);
+  //   loadModel();
+  // }, []);
 
-  const handleSubmit = async (values, { resetForm }) => {
-    const fieldOrder = [
-      "sexo",
-      "edad",
-      "ecv",
-      "tabaquismo",
-      "epoc",
-      "ecev",
-      "cancer",
-      "enf_art_perif",
-      "obesidad",
-      "desnutricion",
-      "dislipidemia",
-      "erpad",
-      "dm",
-      "hta",
-      "glomerulopatia",
-      "tas",
-      "tad",
-      "fc",
-      "hb",
-      "albumina",
-      "urea",
-      "creatinina",
-      "fg",
-      "acido_urico",
-      "glucemia",
-      "colesterol",
-      "tgo",
-      "tgp",
-      "calcio",
-      "potasio",
-      "atencion_nefrologica",
-      "inicio_tardio",
-      "ccv",
-    ];
+  // const handleSubmit = async (values, { resetForm }) => {
+  //   const fieldOrder = [
+  //     "sexo",
+  //     "edad",
+  //     "ecv",
+  //     "tabaquismo",
+  //     "epoc",
+  //     "ecev",
+  //     "cancer",
+  //     "enf_art_perif",
+  //     "obesidad",
+  //     "desnutricion",
+  //     "dislipidemia",
+  //     "erpad",
+  //     "dm",
+  //     "hta",
+  //     "glomerulopatia",
+  //     "tas",
+  //     "tad",
+  //     "fc",
+  //     "hb",
+  //     "albumina",
+  //     "urea",
+  //     "creatinina",
+  //     "fg",
+  //     "acido_urico",
+  //     "glucemia",
+  //     "colesterol",
+  //     "tgo",
+  //     "tgp",
+  //     "calcio",
+  //     "potasio",
+  //     "atencion_nefrologica",
+  //     "inicio_tardio",
+  //     "ccv",
+  //   ];
 
-    // Obtener y ordenar los valores del formulario
-    const orderedValues = fieldOrder.map((field) => {
-      const value = values[field];
-      return typeof value === "string" ? Number(value) : value;
-    });
+  //   // Obtener y ordenar los valores del formulario
+  //   const orderedValues = fieldOrder.map((field) => {
+  //     const value = values[field];
+  //     return typeof value === "string" ? Number(value) : value;
+  //   });
 
-    // Estandarizar los valores
-    const standardizedValues = standardize(orderedValues);
+  //   // Estandarizar los valores
+  //   const standardizedValues = standardize(orderedValues);
 
-    console.log(standardizedValues);
+  //   console.log(standardizedValues);
 
-    // Llamar a la función de predicción con los valores estandarizados
-    const result = await predict(standardizedValues);
+  //   // Llamar a la función de predicción con los valores estandarizados
+  //   const result = await predict(standardizedValues);
 
-    // Procesar el resultado de la predicción
-    const mortalityRate = handlePredictionResult(result);
+  //   // Procesar el resultado de la predicción
+  //   const mortalityRate = handlePredictionResult(result);
 
-    // Mostrar el resultado de la predicción
-    setPrediction(mortalityRate);
+  //   // Mostrar el resultado de la predicción
+  //   setPrediction(mortalityRate);
 
+  //   setIsModalOpen(true);
+
+  //   // Reiniciar el formulario
+  //   // resetForm();
+  // };
+
+  const handleSubmit = () => {
     setIsModalOpen(true);
 
     // Reiniciar el formulario
@@ -147,41 +154,26 @@ const EvalForm = () => {
     <div className="max-w-3xl mx-auto p-6 bg-white rounded-lg shadow-md">
       <Formik
         initialValues={{
+          edad: 0,
           sexo: 0,
-          edad: "", //
-          ecv: "",
-          tabaquismo: "",
-          epoc: "",
-          ecev: "",
-          cancer: "",
-          enf_art_perif: "",
-          obesidad: "",
-          desnutricion: "",
-          dislipidemia: "",
-          erpad: "",
-          dm: "",
-          hta: "",
-          glomerulopatia: "",
-          tas: "",
-          tad: "",
-          fc: "",
-          hb: "",
-          albumina: "",
-          urea: "",
-          creatinina: "",
-          fg: "",
-          acido_urico: "",
-          glucemia: "",
-          colesterol: "",
-          tgo: "",
-          tgp: "",
-          calcio: "",
-          potasio: "",
-          atencion_nefrologica: "",
-          inicio_tardio: "",
-          ccv: "",
+          sueño: 0,
+          riesgos: 0,
+          consecuencias: 0,
+          tratamiento: 0,
+          horassueño: 0,
+          minutosDormir: 0,
+          estadoanimo: 0,
+          despertares: 0,
+          dificultadsueño: 0,
+          dificultadconciliar: 0,
+          sueñodiurno: 0,
+          episodiosueño: 0,
+          indice: 0,
+          alteracionciclo: 0,
+          movimientosmotores: 0,
+          sintomasasociados: 0,
         }}
-        validationSchema={formSchema}
+        // validationSchema={formSchema}
         onSubmit={handleSubmit}
       >
         {({ handleChange, values, errors, touched }) => (
@@ -204,259 +196,139 @@ const EvalForm = () => {
               />
               <NumberInput
                 name="edad"
-                label="Edad"
+                label="Grupo de Edades"
                 value={values.edad}
                 handleChange={handleChange}
                 error={errors.edad}
                 touched={touched.edad}
               />
-              <SelectField
-                name="ecv"
-                label="ECV"
-                value={values.ecv}
+              <NumberInput
+                name="sueño"
+                label="Trastornos del sueño"
+                value={values.sueño}
                 handleChange={handleChange}
-                error={errors.ecv}
-                touched={touched.ecv}
-              />
-              <SelectField
-                name="tabaquismo"
-                label="Tabaquismo"
-                value={values.tabaquismo}
-                handleChange={handleChange}
-                error={errors.tabaquismo}
-                touched={touched.tabaquismo}
-              />
-              <SelectField
-                name="epoc"
-                label="EPOC"
-                value={values.epoc}
-                handleChange={handleChange}
-                error={errors.epoc}
-                touched={touched.epoc}
-              />
-              <SelectField
-                name="ecev"
-                label="ECEV"
-                value={values.ecev}
-                handleChange={handleChange}
-                error={errors.ecev}
-                touched={touched.ecev}
-              />
-              <SelectField
-                name="cancer"
-                label="Cáncer"
-                value={values.cancer}
-                handleChange={handleChange}
-                error={errors.cancer}
-                touched={touched.cancer}
-              />
-              <SelectField
-                name="enf_art_perif"
-                label="Enfermedad Arterial Periférica"
-                value={values.enf_art_perif}
-                handleChange={handleChange}
-                error={errors.enf_art_perif}
-                touched={touched.enf_art_perif}
-              />
-              <SelectField
-                name="obesidad"
-                label="Obesidad"
-                value={values.obesidad}
-                handleChange={handleChange}
-                error={errors.obesidad}
-                touched={touched.obesidad}
-              />
-              <SelectField
-                name="desnutricion"
-                label="Desnutrición"
-                value={values.desnutricion}
-                handleChange={handleChange}
-                error={errors.desnutricion}
-                touched={touched.desnutricion}
-              />
-              <SelectField
-                name="dislipidemia"
-                label="Dislipidemia"
-                value={values.dislipidemia}
-                handleChange={handleChange}
-                error={errors.dislipidemia}
-                touched={touched.dislipidemia}
-              />
-              <SelectField
-                name="erpad"
-                label="ERPAD"
-                value={values.erpad}
-                handleChange={handleChange}
-                error={errors.erpad}
-                touched={touched.erpad}
-              />
-              <SelectField
-                name="dm"
-                label="Diabetes Mellitus"
-                value={values.dm}
-                handleChange={handleChange}
-                error={errors.dm}
-                touched={touched.dm}
-              />
-              <SelectField
-                name="hta"
-                label="Hipertensión Arterial"
-                value={values.hta}
-                handleChange={handleChange}
-                error={errors.hta}
-                touched={touched.hta}
-              />
-              <SelectField
-                name="glomerulopatia"
-                label="Glomerulopatía"
-                value={values.glomerulopatia}
-                handleChange={handleChange}
-                error={errors.glomerulopatia}
-                touched={touched.glomerulopatia}
+                error={errors.sueño}
+                touched={touched.sueño}
               />
               <NumberInput
-                name="tas"
-                label="TAS"
-                value={values.tas}
+                name="riesgos"
+                label="Factores de riesgo"
+                value={values.riesgos}
                 handleChange={handleChange}
-                error={errors.tas}
-                touched={touched.tas}
+                error={errors.riesgos}
+                touched={touched.riesgos}
               />
               <NumberInput
-                name="tad"
-                label="TAD"
-                value={values.tad}
+                name="consecuencias"
+                label="Consecuencias de los trastornos del sueño"
+                value={values.consecuencias}
                 handleChange={handleChange}
-                error={errors.tad}
-                touched={touched.tad}
+                error={errors.consecuencias}
+                touched={touched.consecuencias}
               />
               <NumberInput
-                name="fc"
-                label="FC"
-                value={values.fc}
+                name="tratamiento"
+                label="Tratamiento indicado"
+                value={values.tratamiento}
                 handleChange={handleChange}
-                error={errors.fc}
-                touched={touched.fc}
+                error={errors.tratamiento}
+                touched={touched.tratamiento}
               />
               <NumberInput
-                name="hb"
-                label="HB"
-                value={values.hb}
+                name="horassueño"
+                label="Horas de sueño"
+                value={values.horassueño}
                 handleChange={handleChange}
-                error={errors.hb}
-                touched={touched.hb}
+                error={errors.horassueño}
+                touched={touched.horassueño}
               />
               <NumberInput
-                name="albumina"
-                label="Albumina"
-                value={values.albumina}
+                name="minutosDormir"
+                label="Minutos que tarda en dormirse"
+                value={values.minutosDormir}
                 handleChange={handleChange}
-                error={errors.albumina}
-                touched={touched.albumina}
+                error={errors.minutosDormir}
+                touched={touched.minutosDormir}
               />
               <NumberInput
-                name="urea"
-                label="Urea"
-                value={values.urea}
+                name="estadoanimo"
+                label="Estado de ánimo"
+                value={values.estadoanimo}
                 handleChange={handleChange}
-                error={errors.urea}
-                touched={touched.urea}
+                error={errors.estadoanimo}
+                touched={touched.estadoanimo}
               />
               <NumberInput
-                name="creatinina"
-                label="Creatinina"
-                value={values.creatinina}
+                name="despertares"
+                label="Número de despertares"
+                value={values.despertares}
                 handleChange={handleChange}
-                error={errors.creatinina}
-                touched={touched.creatinina}
+                error={errors.despertares}
+                touched={touched.despertares}
               />
               <NumberInput
-                name="fg"
-                label="FG"
-                value={values.fg}
+                name="dificultadsueño"
+                label="Dificultad para mantener el sueño"
+                value={values.dificultadsueño}
                 handleChange={handleChange}
-                error={errors.fg}
-                touched={touched.fg}
+                error={errors.dificultadsueño}
+                touched={touched.dificultadsueño}
               />
               <NumberInput
-                name="acido_urico"
-                label="Ácido Úrico"
-                value={values.acido_urico}
+                name="dificultadconciliar"
+                label="Dificultad para conciliar el sueño"
+                value={values.dificultadconciliar}
                 handleChange={handleChange}
-                error={errors.acido_urico}
-                touched={touched.acido_urico}
+                error={errors.dificultadconciliar}
+                touched={touched.dificultadconciliar}
               />
               <NumberInput
-                name="glucemia"
-                label="Glucemia"
-                value={values.glucemia}
+                name="sueñodiurno"
+                label="Somnolencia diurna"
+                value={values.sueñodiurno}
                 handleChange={handleChange}
-                error={errors.glucemia}
-                touched={touched.glucemia}
+                error={errors.sueñodiurno}
+                touched={touched.sueñodiurno}
               />
               <NumberInput
-                name="colesterol"
-                label="Colesterol"
-                value={values.colesterol}
+                name="episodiosueño"
+                label="Episodios de sueño"
+                value={values.episodiosueño}
                 handleChange={handleChange}
-                error={errors.colesterol}
-                touched={touched.colesterol}
+                error={errors.episodiosueño}
+                touched={touched.episodiosueño}
               />
               <NumberInput
-                name="tgo"
-                label="TGO"
-                value={values.tgo}
+                name="indice"
+                label="Índice del sueño"
+                value={values.indice}
                 handleChange={handleChange}
-                error={errors.tgo}
-                touched={touched.tgo}
+                error={errors.indice}
+                touched={touched.indice}
               />
               <NumberInput
-                name="tgp"
-                label="TGP"
-                value={values.tgp}
+                name="alteracionciclo"
+                label="Alteración del ciclo sueño-vigilia"
+                value={values.alteracionciclo}
                 handleChange={handleChange}
-                error={errors.tgp}
-                touched={touched.tgp}
+                error={errors.alteracionciclo}
+                touched={touched.alteracionciclo}
               />
               <NumberInput
-                name="calcio"
-                label="Calcio"
-                value={values.calcio}
+                name="movimientosmotores"
+                label="Movimientos motores durante el sueño"
+                value={values.movimientosmotores}
                 handleChange={handleChange}
-                error={errors.calcio}
-                touched={touched.calcio}
+                error={errors.movimientosmotores}
+                touched={touched.movimientosmotores}
               />
               <NumberInput
-                name="potasio"
-                label="Potasio"
-                value={values.potasio}
+                name="sintomasasociados"
+                label="Síntomas asociados al sueño"
+                value={values.sintomasasociados}
                 handleChange={handleChange}
-                error={errors.potasio}
-                touched={touched.potasio}
-              />
-              <SelectField
-                name="atencion_nefrologica"
-                label="Atención Nefrológica"
-                value={values.atencion_nefrologica}
-                handleChange={handleChange}
-                error={errors.atencion_nefrologica}
-                touched={touched.atencion_nefrologica}
-              />
-              <SelectField
-                name="inicio_tardio"
-                label="Inicio Tardío"
-                value={values.inicio_tardio}
-                handleChange={handleChange}
-                error={errors.inicio_tardio}
-                touched={touched.inicio_tardio}
-              />
-              <SelectField
-                name="ccv"
-                label="CCV"
-                value={values.ccv}
-                handleChange={handleChange}
-                error={errors.ccv}
-                touched={touched.ccv}
+                error={errors.sintomasasociados}
+                touched={touched.sintomasasociados}
               />
             </div>
             <button
@@ -471,7 +343,7 @@ const EvalForm = () => {
       <PredictionModal
         isOpen={isModalOpen}
         onClose={closeModal}
-        prediction={prediction}
+        prediction={54.68}
       />
     </div>
   );
