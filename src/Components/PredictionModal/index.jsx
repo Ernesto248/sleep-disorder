@@ -5,7 +5,7 @@ const PredictionModal = ({ isOpen, onClose, prediction }) => {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white p-6 rounded-lg shadow-lg w-1/3 max-w-md">
+      <div className="bg-white p-6 rounded-lg shadow-lg w-11/12 sm:w-1/2 md:w-1/3 lg:w-1/4 max-w-md">
         <h2 className="text-xl font-bold mb-4 text-center">
           Resultado de la Predicción
         </h2>
