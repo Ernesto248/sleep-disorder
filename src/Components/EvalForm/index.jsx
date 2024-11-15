@@ -343,7 +343,7 @@ const EvalForm = () => {
       <PredictionModal
         isOpen={isModalOpen}
         onClose={closeModal}
-        prediction={54.68}
+        prediction={84.68}
       />
     </div>
   );
