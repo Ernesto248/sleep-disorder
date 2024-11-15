@@ -10,7 +10,7 @@ const PredictionModal = ({ isOpen, onClose, prediction }) => {
           Resultado de la Predicción
         </h2>
         <p className="text-lg mb-4 text-center">
-          {prediction}% riesgo de trastorno de sueño
+          {prediction}% de riesgo de trastorno de sueño
         </p>
         <div className="flex justify-center">
           <button
