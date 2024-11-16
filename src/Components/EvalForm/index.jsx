@@ -155,25 +155,24 @@ const EvalForm = () => {
       <Formik
         initialValues={{
           edad: 0,
-          sexo: 0,
-          sueño: 0,
-          riesgos: 0,
-          consecuencias: 0,
+          sexo: "",
+          ant_patologicos_fam: 0,
+          ant_pre_peri_postnatales_positivos: 0,
+          alteraciones_anatomicas: 0,
+          consumo_medicamentos: 0,
+          consumo_toxicos: 0,
+          exp_medios_pantallas: 0,
+          trastorno_neurodesarrollo: 0,
+          obesidad: 0,
+          hipertension_arterial: 0,
+          trastornos_aprendizaje: 0,
+          trastornos_comportamiento: 0,
+          cefalea: 0,
+          res_insulina: 0,
+          depresion: 0,
           tratamiento: 0,
-          horassueño: 0,
-          minutosDormir: 0,
-          estadoanimo: 0,
-          despertares: 0,
-          dificultadsueño: 0,
-          dificultadconciliar: 0,
-          sueñodiurno: 0,
-          episodiosueño: 0,
-          indice: 0,
-          alteracionciclo: 0,
-          movimientosmotores: 0,
-          sintomasasociados: 0,
         }}
-        // validationSchema={formSchema}
+        validationSchema={formSchema}
         onSubmit={handleSubmit}
       >
         {({ handleChange, values, errors, touched }) => (
@@ -188,7 +187,7 @@ const EvalForm = () => {
             <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
               <SelectField
                 name="sexo"
-                label="Sexo (0-hombre 1-mujer)"
+                label="Sexo"
                 value={values.sexo}
                 handleChange={handleChange}
                 error={errors.sexo}
@@ -196,139 +195,131 @@ const EvalForm = () => {
               />
               <NumberInput
                 name="edad"
-                label="Grupo de Edades"
+                label="Edad"
                 value={values.edad}
                 handleChange={handleChange}
                 error={errors.edad}
                 touched={touched.edad}
               />
-              <NumberInput
-                name="sueño"
-                label="Trastornos del sueño"
-                value={values.sueño}
+              <SelectField
+                name="ant_patologicos_fam"
+                label="Antecedentes patológicos familiares"
+                value={values.ant_patologicos_fam}
                 handleChange={handleChange}
-                error={errors.sueño}
-                touched={touched.sueño}
+                error={errors.ant_patologicos_fam}
+                touched={touched.ant_patologicos_fam}
               />
-              <NumberInput
-                name="riesgos"
-                label="Factores de riesgo"
-                value={values.riesgos}
+              <SelectField
+                name="ant_pre_peri_postnatales_positivos"
+                label="Antecedentes pre, peri o postnatales positivos"
+                value={values.ant_pre_peri_postnatales_positivos}
                 handleChange={handleChange}
-                error={errors.riesgos}
-                touched={touched.riesgos}
+                error={errors.ant_pre_peri_postnatales_positivos}
+                touched={touched.ant_pre_peri_postnatales_positivos}
               />
-              <NumberInput
-                name="consecuencias"
-                label="Consecuencias de los trastornos del sueño"
-                value={values.consecuencias}
+              <SelectField
+                name="alteraciones_anatomicas"
+                label="Alteraciones anatómicas"
+                value={values.alteraciones_anatomicas}
                 handleChange={handleChange}
-                error={errors.consecuencias}
-                touched={touched.consecuencias}
+                error={errors.alteraciones_anatomicas}
+                touched={touched.alteraciones_anatomicas}
               />
-              <NumberInput
+              <SelectField
+                name="consumo_medicamentos"
+                label="Consumo de medicamentos"
+                value={values.consumo_medicamentos}
+                handleChange={handleChange}
+                error={errors.consumo_medicamentos}
+                touched={touched.consumo_medicamentos}
+              />
+              <SelectField
+                name="consumo_toxicos"
+                label="Consumo de tóxicos"
+                value={values.consumo_toxicos}
+                handleChange={handleChange}
+                error={errors.consumo_toxicos}
+                touched={touched.consumo_toxicos}
+              />
+              <SelectField
+                name="exp_medios_pantallas"
+                label="Exposición a medios y pantallas"
+                value={values.exp_medios_pantallas}
+                handleChange={handleChange}
+                error={errors.exp_medios_pantallas}
+                touched={touched.exp_medios_pantallas}
+              />
+              <SelectField
+                name="trastorno_neurodesarrollo"
+                label="Trastorno del neurodesarrollo"
+                value={values.trastorno_neurodesarrollo}
+                handleChange={handleChange}
+                error={errors.trastorno_neurodesarrollo}
+                touched={touched.trastorno_neurodesarrollo}
+              />
+              <SelectField
+                name="obesidad"
+                label="Obesidad"
+                value={values.obesidad}
+                handleChange={handleChange}
+                error={errors.obesidad}
+                touched={touched.obesidad}
+              />
+              <SelectField
+                name="hipertension_arterial"
+                label="Hipertensión arterial"
+                value={values.hipertension_arterial}
+                handleChange={handleChange}
+                error={errors.hipertension_arterial}
+                touched={touched.hipertension_arterial}
+              />
+              <SelectField
+                name="trastornos_aprendizaje"
+                label="Trastornos del aprendizaje"
+                value={values.trastornos_aprendizaje}
+                handleChange={handleChange}
+                error={errors.trastornos_aprendizaje}
+                touched={touched.trastornos_aprendizaje}
+              />
+              <SelectField
+                name="trastornos_comportamiento"
+                label="Trastornos del comportamiento"
+                value={values.trastornos_comportamiento}
+                handleChange={handleChange}
+                error={errors.trastornos_comportamiento}
+                touched={touched.trastornos_comportamiento}
+              />
+              <SelectField
+                name="cefalea"
+                label="Cefalea"
+                value={values.cefalea}
+                handleChange={handleChange}
+                error={errors.cefalea}
+                touched={touched.cefalea}
+              />
+              <SelectField
+                name="res_insulina"
+                label="Resistencia a la insulina"
+                value={values.res_insulina}
+                handleChange={handleChange}
+                error={errors.res_insulina}
+                touched={touched.res_insulina}
+              />
+              <SelectField
+                name="depresion"
+                label="Depresión"
+                value={values.depresion}
+                handleChange={handleChange}
+                error={errors.depresion}
+                touched={touched.depresion}
+              />
+              <SelectField
                 name="tratamiento"
-                label="Tratamiento indicado"
+                label="Tratamiento"
                 value={values.tratamiento}
                 handleChange={handleChange}
                 error={errors.tratamiento}
                 touched={touched.tratamiento}
-              />
-              <NumberInput
-                name="horassueño"
-                label="Horas de sueño"
-                value={values.horassueño}
-                handleChange={handleChange}
-                error={errors.horassueño}
-                touched={touched.horassueño}
-              />
-              <NumberInput
-                name="minutosDormir"
-                label="Minutos que tarda en dormirse"
-                value={values.minutosDormir}
-                handleChange={handleChange}
-                error={errors.minutosDormir}
-                touched={touched.minutosDormir}
-              />
-              <NumberInput
-                name="estadoanimo"
-                label="Estado de ánimo"
-                value={values.estadoanimo}
-                handleChange={handleChange}
-                error={errors.estadoanimo}
-                touched={touched.estadoanimo}
-              />
-              <NumberInput
-                name="despertares"
-                label="Número de despertares"
-                value={values.despertares}
-                handleChange={handleChange}
-                error={errors.despertares}
-                touched={touched.despertares}
-              />
-              <NumberInput
-                name="dificultadsueño"
-                label="Dificultad para mantener el sueño"
-                value={values.dificultadsueño}
-                handleChange={handleChange}
-                error={errors.dificultadsueño}
-                touched={touched.dificultadsueño}
-              />
-              <NumberInput
-                name="dificultadconciliar"
-                label="Dificultad para conciliar el sueño"
-                value={values.dificultadconciliar}
-                handleChange={handleChange}
-                error={errors.dificultadconciliar}
-                touched={touched.dificultadconciliar}
-              />
-              <NumberInput
-                name="sueñodiurno"
-                label="Somnolencia diurna"
-                value={values.sueñodiurno}
-                handleChange={handleChange}
-                error={errors.sueñodiurno}
-                touched={touched.sueñodiurno}
-              />
-              <NumberInput
-                name="episodiosueño"
-                label="Episodios de sueño"
-                value={values.episodiosueño}
-                handleChange={handleChange}
-                error={errors.episodiosueño}
-                touched={touched.episodiosueño}
-              />
-              <NumberInput
-                name="indice"
-                label="Índice del sueño"
-                value={values.indice}
-                handleChange={handleChange}
-                error={errors.indice}
-                touched={touched.indice}
-              />
-              <NumberInput
-                name="alteracionciclo"
-                label="Alteración del ciclo sueño-vigilia"
-                value={values.alteracionciclo}
-                handleChange={handleChange}
-                error={errors.alteracionciclo}
-                touched={touched.alteracionciclo}
-              />
-              <NumberInput
-                name="movimientosmotores"
-                label="Movimientos motores durante el sueño"
-                value={values.movimientosmotores}
-                handleChange={handleChange}
-                error={errors.movimientosmotores}
-                touched={touched.movimientosmotores}
-              />
-              <NumberInput
-                name="sintomasasociados"
-                label="Síntomas asociados al sueño"
-                value={values.sintomasasociados}
-                handleChange={handleChange}
-                error={errors.sintomasasociados}
-                touched={touched.sintomasasociados}
               />
             </div>
             <button

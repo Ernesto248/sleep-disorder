@@ -20,8 +20,8 @@ function Home() {
           <p className="text-xl mt-4">
             <strong>Creado por:</strong>
             <br />
-            Dra Grethel Camejo <br />
-            Jose Daniel Monzon
+            Dra. Grethel Camejo Sampedro <br />
+            José Daniel Monzón Rodríguez
           </p>
         </div>
       </div>

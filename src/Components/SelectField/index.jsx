@@ -1,6 +1,18 @@
 import React from "react";
 
 const SelectField = ({ name, label, value, handleChange, error, touched }) => {
+  // Define las opciones dinámicamente
+  const options =
+    name === "sexo"
+      ? [
+          { value: 0, label: "Masculino" },
+          { value: 1, label: "Femenino" },
+        ]
+      : [
+          { value: 0, label: "No" },
+          { value: 1, label: "Sí" },
+        ];
+
   return (
     <div className="mb-4">
       <label className="block text-gray-700 font-medium mb-2">{label}</label>
@@ -12,8 +24,11 @@ const SelectField = ({ name, label, value, handleChange, error, touched }) => {
           error && touched ? "border-red-500" : "border-gray-300"
         } rounded-lg bg-gray-100 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500`}
       >
-        <option value={0}>0</option>
-        <option value={1}>1</option>
+        {options.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
       </select>
       {error && touched && <div className="text-red-500 mt-1">{error}</div>}
     </div>
